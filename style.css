@@ -61,7 +61,6 @@ body {
     padding: 12px;
     resize: none;
     font-size: 18px;
-    user-select: none;
 }
 
 #dataset {

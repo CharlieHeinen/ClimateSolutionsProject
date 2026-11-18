@@ -15,9 +15,17 @@
             <div id="title">
                 <h1>Title goes here</h1>
 
-                <p>You've just been appointed as the CEO of a new AI company! 
-                    In order to handle all of the prompts by your users, you've decided to build a new data center.
-                    
+                <p style="margin-bottom:10px;">You've just been appointed as the CEO of a new AI company! 
+                    To support the growing needs of your customers, you've decided to build a new data center.
+                    But since you're a good person who cares about the environment more than profits, 
+                    you want to do what you can to limit emissions. 
+                    Adjust the settings to represent a typical AI data center, 
+                    and then try to get your total CO2 emissions to be less than X% per year.
+                    If you have questions, try asking the "AI" model below!
+                </p>
+
+                <p style="font-size:14px;margin-bottom:35px">
+                    Hint: most data centers get over X% of their energy from natural gas. Try to find a way to get power from renewable sources instead!
                 </p>
             </div>
         </div>
@@ -42,7 +50,7 @@
                 <br>
 
                 <div>
-                    It took <span id="stat-time">#</span> seconds to generate yor response.
+                    It took <span id="stat-time">#</span> seconds to generate your response.
                 </div>
 
                 <div>
@@ -50,7 +58,23 @@
                 </div>
 
                 <div>
-                    Your response generated # emissions
+                    Generating your response used <span id="stat-power">#</span> units of power and released <span id="stat-emissions">#</span> units of CO2
+                </div>
+
+                <div>
+                    Your data center is now using ~<span id="stat-power">#</span> units of power and releasing ~<span id="stat-emissions">#</span> units of CO2 per day!
+                </div>
+
+                <div>
+                    That's nearly <span id="stat-emmissions-annual">#</span> units of CO2 every year!
+                </div>
+
+                <div>
+                    Your data center's power mix was: 
+                    <span id="stat-percent-natural-gas">#</span>% natural gas, 
+                    <span id="stat-percent-coal">#</span>% coal, and 
+                    <span id="stat-percent-renewable">#</span> renewable sources.
+                    <span id="stat-percent-extra"></span>
                 </div>
 
             </div>
@@ -64,6 +88,9 @@
 
             <summary>
                 Settings:
+                <div style="font-size: 14px;">
+                    You should ask what these do!
+                </div>
             </summary>
 
             <div id="settings">
@@ -83,6 +110,33 @@
                     </label>
 
                     <input type="number" value=1 id="setting-dataset-size">
+
+                </div>
+
+                <div class="setting">
+                    <label>
+                        Power Usage Efficiency
+                    </label>
+
+                    <input type="number" value=1.0 id="setting-pue">
+
+                </div>
+
+                <div class="setting">
+                    <label>
+                        Required % of Renewable Energy
+                    </label>
+
+                    <input type="number" value=0 id="setting-dataset-size">
+
+                </div>
+
+                <div class="setting">
+                    <label>
+                        IDAs
+                    </label>
+
+                    <input type="number" value=0 id="setting-dataset-size">
 
                 </div>
 
