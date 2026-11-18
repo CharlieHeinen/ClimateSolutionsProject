@@ -1,28 +1,86 @@
-words = ["The", "A", "I", "You", "Thing", "Test", "Is", "Sentence", "Another", "Hello", "World"];
-
-dataset = ["This is a sentence", "This is another sentence", "Hello world"];
-
+var dataset = new Map();
+dataset.set("This is a response", ["Keyword", "Key",  "Words"]);
+for(let i=0;i<100;i++) {
+    dataset.set("Test " + i.toString(), ["None"])
+}
 
 function main() {
     console.log("Hello World!");
 
     let textbox = document.getElementById("main-textbox");
-
     let button = document.getElementById("button");
+
+    generate_dataset_html()
+
     button.onclick = () => {
         console.log(textbox.value);
-        console.log(compute_string(textbox.value));
+
+        update_dataset()
+        //console.log(dataset)
+
+        let response = generate_response(textbox.value)
+
+        console.log(response);
     }
 }
 
-/***
- * Does the LLM process for a string
+/**
+ * Called when the website loads to set the dataset to the predefined one.
  */
-function compute_string(input) {
-    input = input.toLowerCase();
-    return best_data(tokenize(input));
+function generate_dataset_html() {
+    let dataset_div = document.getElementById("dataset")
+
+    for (const [response, keywords] of dataset) {
+        let new_div = document.createElement("div")
+        new_div.classList.add("dataset-entry")
+        let new_response_div = document.createElement("div")
+        new_response_div.classList.add("dataset-response")
+        let new_keywords_div = document.createElement("div")
+        new_keywords_div.classList.add("dataset-keywords")
+
+        let new_response_text = document.createElement("textarea")
+        let new_keywords_text = document.createElement("textarea")
+
+        new_response_text.value = response
+        new_keywords_text.value = keywords.toString()
+
+        new_response_div.appendChild(new_response_text)
+        new_keywords_div.appendChild(new_keywords_text)
+
+        new_div.appendChild(new_response_div)
+        new_div.appendChild(new_keywords_div)
+
+        dataset_div.appendChild(new_div)
+    }
 }
 
+/**
+ * Updates the dataset based on the HTML file.
+ * Called when generating a response
+ */
+function update_dataset() {
+    let dataset_div = document.getElementById("dataset")
+
+    dataset = new Map()
+
+    for (const child of dataset_div.children) {
+        response = child.children[0].children[0].value
+        keywords = child.children[1].children[0].value.split(",")
+        dataset.set(response, keywords)
+    }
+}
+
+/**
+ * Does the "LLM" process to get a response for an input
+ */
+function generate_response(input) {
+    let tokens = tokenize(input)
+    let response = best_response(tokens)
+    if (response == "") {
+        return "I don't seem to have an answer for that. Try asking something else."
+    }
+    return response
+}
 
 /***
  * Turns an input string into a list of "tokens" (words)
@@ -31,46 +89,27 @@ function tokenize(string) {
     return string.split(" ");
 }
 
-/***
- * Predicts the best word based on a token
- */
-function best_word(token) {
-
-    //Go through the dataset and find the most relevant thing
-    let best_count = 0;
-    let best_data = "";
-    for(const data of dataset) {
-        let count = 0;
-        for(const word of data.split(" ")) {
-            if(word.toLowerCase() == token.toLowerCase()) {
-                count++;
-            }
-        }
-        if(count > best_count) {
-            best_count = count;
-            best_data = data;
-        }
-    }
-
-    return [best_data, best_count];
-}
 
 /**
- * Predicts the best piece of data to return given the tokens
+ * Gets the best response based on the tokens (keywords).
+ * It simply gets the premade response with the most keywords in it.
  */
-function best_data(tokens) {
-
-    let best_data = "";
+function best_response(tokens) {
+    let best_response = "";
     let best_count = 0;
-    for(const token of tokens) {
-        let data = best_word(token);
-        if(data[1] > best_count) {
-            best_data = data[0];
-            best_count = data[1];
+    for (const [response, keywords] of dataset) {
+        let count = 0;
+        for (const keyword of keywords) {
+            if (tokens.includes(keyword.trim().toLowerCase())) {
+                count += 1;
+            }
+        }
+        if (count > best_count) {
+            best_response = response
         }
     }
 
-    return best_data;
+    return best_response;
 }
 
 window.onload = main;
