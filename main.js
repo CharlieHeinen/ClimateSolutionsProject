@@ -4,6 +4,9 @@ for(let i=0;i<100;i++) {
     dataset.set("Test " + i.toString(), ["None"])
 }
 
+//Settings go here
+var test_setting = 0
+
 function main() {
     console.log("Hello World!");
 
@@ -15,7 +18,9 @@ function main() {
     button.onclick = () => {
         console.log(textbox.value);
 
+        update_settings()
         update_dataset()
+        //console.log(test_setting)
         //console.log(dataset)
 
         let response = generate_response(textbox.value)
@@ -68,6 +73,13 @@ function update_dataset() {
         keywords = child.children[1].children[0].value.split(",")
         dataset.set(response, keywords)
     }
+}
+
+/**
+ * Called when generating a response to update setting values
+ */
+function update_settings() {
+    test_setting = parseInt(document.getElementById("setting-test").value)
 }
 
 /**

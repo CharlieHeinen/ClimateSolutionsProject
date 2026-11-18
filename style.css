@@ -1,3 +1,8 @@
+body {
+    background-color: #fafafa;
+    font-family: monospace;
+}
+
 #main-container {
     width: 100%;
     display: flex;
@@ -13,13 +18,25 @@
     width: 80%;
     height: 200px;
     border: 2px solid #aaaaaa;
-    border-radius: 4px;
+    border-radius: 12px;
+    padding: 12px;
+    resize: none;
+    font-size: 18px;
 }
 
 #button {
     margin-top: 25px;
-    width: 200px;
-    height: 50px;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 24px;
+    border: 2px solid #aaaaaa;
+    border-radius: 12px;
+    font-family: monospace;
+    background-color: #eeeeee;
+}
+
+#button:hover {
+    background-color: #dddddd;
 }
 
 #dataset {
@@ -58,4 +75,29 @@ summary {
     font-size: 25px;
     cursor: pointer;
     user-select: none;
+}
+
+#settings {
+    width: 50%;
+    max-height: 500px;
+    border: 2px solid #aaaaaa;
+    border-radius: 4px;
+}
+
+.setting {
+    display: flex;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.setting label {
+    user-select: none;
+}
+
+.setting input {
+    margin-left: 25px;
+    border: 2px solid #aaaaaa;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 5px;
 }
