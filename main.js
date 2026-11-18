@@ -12,6 +12,7 @@ function main() {
 
     let textbox = document.getElementById("main-textbox");
     let button = document.getElementById("button");
+    let response_div = document.getElementById("response")
 
     generate_dataset_html()
 
@@ -24,6 +25,8 @@ function main() {
         //console.log(dataset)
 
         let response = generate_response(textbox.value)
+
+        response_div.innerHTML = response
 
         console.log(response);
     }

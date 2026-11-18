@@ -1,5 +1,5 @@
 body {
-    background-color: #fafafa;
+    background-color: #f0f0f0;
     font-family: monospace;
 }
 
@@ -15,6 +15,7 @@ body {
 }
 
 #main-textbox {
+    background-color: #ffffff;
     width: 80%;
     height: 200px;
     border: 2px solid #aaaaaa;
@@ -30,13 +31,38 @@ body {
     padding: 12px;
     font-size: 24px;
     border: 2px solid #aaaaaa;
-    border-radius: 12px;
+    border-radius: 25px;
     font-family: monospace;
-    background-color: #eeeeee;
+    background-color: #55e168;
 }
 
 #button:hover {
     background-color: #dddddd;
+}
+
+#response {
+    background-color: #ffffff;
+    margin-top: 25px;
+    width: 80%;
+    height: 100px;
+    border: 2px solid #aaaaaa;
+    border-radius: 12px;
+    padding: 12px;
+    resize: none;
+    font-size: 18px;
+    user-select: none;
+}
+
+#stats {
+    background-color: #dddddd;
+    margin-top: 25px;
+    width: 80%;
+    height: 250px;
+    border: 2px solid #aaaaaa;
+    padding: 12px;
+    resize: none;
+    font-size: 18px;
+    user-select: none;
 }
 
 #dataset {
