@@ -11,6 +11,14 @@
 
     <div id="main-container">
     
+        <div class="centered" style="width:90%">
+            <div id="title">
+                <h1>Title goes here</h1>
+
+                <p>Subheadings go here</p>
+            </div>
+        </div>
+        
         <div class="centered">
             <textarea id="main-textbox" placeholder="Type something here..."></textarea>
         </div>
@@ -33,11 +41,44 @@
                 <br>
 
                 <div>
-                    Your data set has # Things in it!
+                    Your data set has <span id="stat-dataset-size">#</span> Things in it!
                 </div>
 
                 <div>
                     Your response generated # emissions
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="centered" style="margin-top:50px">
+
+            <details open="true">
+
+            <summary>
+                Settings:
+            </summary>
+
+            <div id="settings">
+
+                <div class="setting">
+                    <label>
+                        Test Setting
+                    </label>
+
+                    <input type="number" value=0 id="setting-test">
+
+                </div>
+
+                <div class="setting">
+                    <label>
+                        Dataset Size Multiplier
+                    </label>
+
+                    <input type="number" value=1 id="setting-dataset-size">
+
                 </div>
 
             </div>
@@ -70,35 +111,7 @@
             </details>
         </div>
 
-        <div class="centered" style="margin-top:50px">
-
-            <details open="true">
-
-            <summary>
-                Settings:
-            </summary>
-
-            <div id="settings">
-
-                <div class="setting">
-                    <label>
-                        Test Setting
-                    </label>
-
-                    <input type="number" value=0 id="setting-test">
-
-                </div>
-
-                <div class="setting">
-                    <label>
-                        Test Setting 2
-                    </label>
-
-                    <input type="number" value=0 id="setting-test-2">
-
-                </div>
-
-            </div>
+        <div style="height: 100px;">
 
         </div>
         

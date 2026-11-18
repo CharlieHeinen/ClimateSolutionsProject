@@ -6,6 +6,7 @@ for(let i=0;i<100;i++) {
 
 //Settings go here
 var test_setting = 0
+var dataset_size = 1
 
 function main() {
     console.log("Hello World!");
@@ -27,6 +28,8 @@ function main() {
         let response = generate_response(textbox.value)
 
         response_div.innerHTML = response
+
+        update_stats()
 
         console.log(response);
     }
@@ -83,6 +86,7 @@ function update_dataset() {
  */
 function update_settings() {
     test_setting = parseInt(document.getElementById("setting-test").value)
+    dataset_size = parseInt(document.getElementById("setting-dataset-size").value)
 }
 
 /**
@@ -112,19 +116,30 @@ function tokenize(string) {
 function best_response(tokens) {
     let best_response = "";
     let best_count = 0;
-    for (const [response, keywords] of dataset) {
-        let count = 0;
-        for (const keyword of keywords) {
-            if (tokens.includes(keyword.trim().toLowerCase())) {
-                count += 1;
+    for (let i=0;i<dataset_size;i++) {
+        for (const [response, keywords] of dataset) {
+            let count = 0;
+            for (const word of response.split(" ")) {
+                if (tokens.includes(word.trim().toLowerCase())) {
+                    count += 1;
+                }
             }
-        }
-        if (count > best_count) {
-            best_response = response
+            for (const keyword of keywords) {
+                if (tokens.includes(keyword.trim().toLowerCase())) {
+                    count += 3;
+                }
+            }
+            if (count > best_count) {
+                best_response = response
+            }
         }
     }
 
     return best_response;
+}
+
+function update_stats() {
+    document.getElementById("stat-dataset-size").innerHTML = dataset.size * dataset_size
 }
 
 window.onload = main;
