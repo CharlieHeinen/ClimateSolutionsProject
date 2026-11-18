@@ -15,12 +15,15 @@
             <div id="title">
                 <h1>Title goes here</h1>
 
-                <p>Subheadings go here</p>
+                <p>You've just been appointed as the CEO of a new AI company! 
+                    In order to handle all of the prompts by your users, you've decided to build a new data center.
+                    
+                </p>
             </div>
         </div>
         
         <div class="centered">
-            <textarea id="main-textbox" placeholder="Type something here..."></textarea>
+            <textarea id="main-textbox" placeholder="Type something here..." rows="5"></textarea>
         </div>
 
         <div class="centered">
@@ -28,9 +31,7 @@
         </div>
 
         <div class="centered">
-            <div id="response">
-                My response will show up here!
-            </div>
+            <textarea id="response" rows="4" readonly="true" disabled="true">My response will show up here!</textarea>
         </div>
 
         <div class="centered">
@@ -41,7 +42,11 @@
                 <br>
 
                 <div>
-                    Your data set has <span id="stat-dataset-size">#</span> Things in it!
+                    It took <span id="stat-time">#</span> seconds to generate yor response.
+                </div>
+
+                <div>
+                    Your data set had <span id="stat-dataset-size">#</span> responses in it.
                 </div>
 
                 <div>
@@ -65,10 +70,10 @@
 
                 <div class="setting">
                     <label>
-                        Test Setting
+                        Active Users
                     </label>
 
-                    <input type="number" value=0 id="setting-test">
+                    <input type="number" value=0 id="setting-users">
 
                 </div>
 

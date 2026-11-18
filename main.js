@@ -5,8 +5,9 @@ for(let i=0;i<100;i++) {
 }
 
 //Settings go here
-var test_setting = 0
+var active_users = 0
 var dataset_size = 1
+var time_difference = 0
 
 function main() {
     console.log("Hello World!");
@@ -25,7 +26,12 @@ function main() {
         //console.log(test_setting)
         //console.log(dataset)
 
+        let start_time = new Date()
+
         let response = generate_response(textbox.value)
+
+        let end_time = new Date()
+        time_difference = end_time.getTime() - start_time.getTime()
 
         response_div.innerHTML = response
 
@@ -85,7 +91,7 @@ function update_dataset() {
  * Called when generating a response to update setting values
  */
 function update_settings() {
-    test_setting = parseInt(document.getElementById("setting-test").value)
+    active_users = parseInt(document.getElementById("setting-users").value)
     dataset_size = parseInt(document.getElementById("setting-dataset-size").value)
 }
 
@@ -139,6 +145,7 @@ function best_response(tokens) {
 }
 
 function update_stats() {
+    document.getElementById("stat-time").innerHTML = time_difference / 1000
     document.getElementById("stat-dataset-size").innerHTML = dataset.size * dataset_size
 }
 
