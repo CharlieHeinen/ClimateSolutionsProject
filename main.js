@@ -1,5 +1,8 @@
 var dataset = new Map();
 dataset.set("This is a response", ["Keyword", "Key",  "Words"]);
+dataset.set("The average power used by AI data centers vary depending on how big they are. This can range from as low as ~50 megawtts per year, to over 1000 megawatts per year! Every 50 megawtts is enough to power over 20,000 homes!", ["power", "energy", "average", "use", "usage", "electricity"])
+dataset.set("In 2024, the United States used ~82 terrawatt hours of electricity to power AI data centers, accounting for ~1.8% of all US electricity use! That's more than some small countries use!", ["total", "use", "usage", "energy", "electricity"])
+dataset.set("A study analyzing 403 AI data centers in the US found that they generated a total of ~26 million tons of CO2 per year. This means each one is responsible for around 64 thousand tons of CO2 per year. In total, these AI data centers accounted for ~0.5% of the country's total CO2 emissions.", ["CO2", "carbon", "emissions", "gas", "gasses", "greenhouse"])
 for(let i=0;i<100;i++) {
     dataset.set("Test " + i.toString(), ["None"])
 }
@@ -111,7 +114,7 @@ function generate_response(input) {
  * Turns an input string into a list of "tokens" (words)
  */
 function tokenize(string) {
-    return string.split(" ");
+    return string.split(" ")
 }
 
 
@@ -135,7 +138,10 @@ function best_response(tokens) {
                     count += 3;
                 }
             }
+            //console.log(count)
+            //console.log(response)
             if (count > best_count) {
+                best_count = count
                 best_response = response
             }
         }
