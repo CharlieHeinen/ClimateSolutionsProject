@@ -117,6 +117,7 @@ function update_settings() {
  * Does the "LLM" process to get a response for an input
  */
 function generate_response(input) {
+    input = input.replace(".", "").replace("?", "").replace(",", "").replace("!", "")
     let tokens = tokenize(input)
     let response = best_response(tokens)
     if (response == "") {

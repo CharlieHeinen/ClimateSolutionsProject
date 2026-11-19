@@ -126,6 +126,7 @@ summary {
     border-radius: 4px;
     font-size: 16px;
     padding: 5px;
+    width: 100px;
 }
 
 #title {
@@ -135,10 +136,9 @@ summary {
 }
 
 #title h1 {
-    font-size: 35px;
+    font-size: 45px;
 }
 
 #title p {
-    font-size: 20px;
     margin-top: 0;
 }

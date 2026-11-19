@@ -4,6 +4,7 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
+    <title>Data Center Simulation</title>
 
 </head>
 
@@ -13,9 +14,9 @@
     
         <div class="centered" style="width:90%">
             <div id="title">
-                <h1>Title goes here</h1>
+                <h1>Data Center Simulation</h1>
 
-                <p style="margin-bottom:10px;">You've just been appointed as the CEO of a new AI company! 
+                <p style="font-size:20px;margin-bottom:10px;">You've just been appointed as the CEO of a new AI company! 
                     To support the growing needs of your customers, you've decided to build a new data center.
                     But since you're a good person who cares about the environment more than profits, 
                     you want to do what you can to limit emissions. 
@@ -39,14 +40,14 @@
         </div>
 
         <div class="centered">
-            <textarea id="response" rows="4" readonly="true" disabled="true">My response will show up here!</textarea>
+            <textarea id="response" rows="4" readonly="true">My response will show up here!</textarea>
         </div>
 
         <div class="centered">
 
             <div id="stats">
 
-                <div style="font-size:32px;font-weight:bold;">Stats: </div>
+                <div style="font-size:28px;font-weight:bold;">Stats: </div>
                 <br>
 
                 <div>
@@ -54,7 +55,7 @@
                 </div>
 
                 <div>
-                    Your data set contained <span id="stat-dataset-size">#</span> responses (~<span id="stat-dataset-gb">#</span>GB).
+                    Your data set contained <span id="stat-dataset-size">#</span> entries (~<span id="stat-dataset-gb">#</span>GB).
                 </div>
 
                 <div>
@@ -70,13 +71,13 @@
                 </div>
 
                 <div>
-                    That's nearly <span id="stat-emissions-annual">#</span> tons of CO2 every year!
+                    That's about <strong><span id="stat-emissions-annual">#</span> tons</strong> of CO2 every year!
                 </div>
 
                 <div>
                     Your data center's power mix was: 
-                    <span id="stat-percent-fossil-fuels">#</span>% fossil fuels and
-                    <span id="stat-percent-clean-energy">#</span>% clean energy. 
+                    <strong><span id="stat-percent-fossil-fuels">#</span>% fossil fuels</strong> and
+                    <strong><span id="stat-percent-clean-energy">#</span>% clean energy</strong>. 
                     <span id="stat-percent-extra"> </span>
                 </div>
 
@@ -139,7 +140,7 @@
                         Industrial Development Authorities 
                     </label>
 
-                    <input type="checkbox" value=false id="setting-ida">
+                    <input type="checkbox" value=false id="setting-ida" style="width:25px;height:25px;">
 
                 </div>
 
