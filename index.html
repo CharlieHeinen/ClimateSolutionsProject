@@ -20,7 +20,7 @@
                     But since you're a good person who cares about the environment more than profits, 
                     you want to do what you can to limit emissions. 
                     Adjust the settings to represent a typical AI data center, 
-                    and then try to get your total CO2 emissions to be less than X% per year.
+                    and then try to get your total CO2 emissions as low as possible.
                     If you have questions, try asking the "AI" model below!
                 </p>
 
@@ -58,23 +58,26 @@
                 </div>
 
                 <div>
-                    Generating your response used <span id="stat-power">#</span> units of power and released <span id="stat-emissions">#</span> units of CO2
+                    Your <span id="stat-users">#</span> users ran <span id="stat-prompts">#</span> prompts today.
                 </div>
 
                 <div>
-                    Your data center is now using ~<span id="stat-power">#</span> units of power and releasing ~<span id="stat-emissions">#</span> units of CO2 per day!
+                    Generating your response used <span id="stat-power">#</span> watt-hours of electricity and released <span id="stat-emissions">#</span> grams of CO2.
                 </div>
 
                 <div>
-                    That's nearly <span id="stat-emmissions-annual">#</span> units of CO2 every year!
+                    Your data center is now using ~<span id="stat-power-day">#</span> watt-hours of power and releasing ~<span id="stat-emissions-day">#</span> tons of CO2 per day!
+                </div>
+
+                <div>
+                    That's nearly <span id="stat-emissions-annual">#</span> tons of CO2 every year!
                 </div>
 
                 <div>
                     Your data center's power mix was: 
-                    <span id="stat-percent-natural-gas">#</span>% natural gas, 
-                    <span id="stat-percent-coal">#</span>% coal, and 
-                    <span id="stat-percent-renewable">#</span> renewable sources.
-                    <span id="stat-percent-extra"></span>
+                    <span id="stat-percent-fossil-fuels">#</span>% fossil fuels and
+                    <span id="stat-percent-clean-energy">#</span>% clean energy. 
+                    <span id="stat-percent-extra"> </span>
                 </div>
 
             </div>
@@ -89,7 +92,7 @@
             <summary>
                 Settings:
                 <div style="font-size: 14px;">
-                    You should ask what these do!
+                    You should ask it what these do!
                 </div>
             </summary>
 
@@ -100,7 +103,7 @@
                         Monthly Active Users
                     </label>
 
-                    <input type="number" value=0 id="setting-users">
+                    <input type="number" value=1 id="setting-users">
 
                 </div>
 
@@ -127,7 +130,7 @@
                         Required % of Renewable Energy
                     </label>
 
-                    <input type="number" value=0 id="setting-percent-renewable">
+                    <input type="number" value="45" id="setting-percent-renewable">
 
                 </div>
 

@@ -7,7 +7,7 @@ dataset.set("One of the biggest ways that AI data centers impact the environment
 dataset.set("Most AI data centers in the US get around 40% of their power from natural gas, 15% from coal, and 45% from clean sources (nuclear, solar, wind, etc). This is no good because around 55% of their power comes from non-renewable fossil fuels.", ["sources", "power", "mix", "grid", "renewable", "coal", "gas", "resources", "electricity", "energy", "get", "from"])
 dataset.set("AI data centers have A LOT of data! Some AI models have petabytes (1,000,000 gigabytes) of data in their datasets! Since our devices can't handle that much, a good estimate to use is 10,000,000 dataset entries (~1 gigabyte). This is only 0.0001% of a petabyte!", ["amount", "much", "data", "keywords", "words", "dataset", "set", "response", "responses", "size", "big"])
 dataset.set("The dataset size multiplier setting can be used make the size of the dataset bigger. It will copy the dataset however many times you tell it to, causing the code to run slower.", ["dataset", "data", "set", "size", "change", "multiplier", "multiplier"])
-dataset.set("One AI prompt uses about 0.3 watt-hours of electricity and releases about 0.03 grams of CO2. This isn't a lot, but given the number of users and additional power needed to run the data center, it adds up quickly!", ["one", "single", "response", "prompt", "effects", "1", "electricity", "power", "energy", "emissions", "CO2", "carbon", "emitted"])
+dataset.set("One AI prompt uses about 0.3 watt-hours of electricity and releases about 0.03-0.20 grams of CO2. This isn't a lot, but given the number of users and additional power needed to run the data center, it adds up quickly!", ["one", "single", "response", "prompt", "effects", "1", "electricity", "power", "energy", "emissions", "CO2", "carbon", "emitted"])
 dataset.set("Popular AI platforms can reach up to a billion active users per month! Some of these platforms are very heavily used, like ChatGPT, which claims to get ~2.5 billion prompts per day!", ["active", "users", "monthly", "month", "day", "people", "prompts", "many", "amount"])
 dataset.set("The Power Usage Efficiency (PUE) of a data center measures how much energy is used for computing versus other aspects of powering the center. A lower score means the data center uses most of its power towards computing. However, lowering this value does not directly change the amount of power the data center uses, so it may not have a significant impact on total emissions.", ["PUE", "power", "usage", "use", "efficiency", "efficiency"])
 dataset.set("Requiring data centers to get a specific amount of their energy from clean sources is a great way to lower their emissions! This will make data centers use less fossil fuels like natural gas, leading to lower emissions and less contributions to climate change! If you'd like, I can give you some suggestions on how to implement these regulations!", ["solution", "renewable", "clean", "energy", "required", "%", "percent", "solutions", "requirements", "require"])
@@ -19,9 +19,9 @@ for(let i=0;i<(100-16);i++) {
 }
 
 //Settings go here
-var active_users = 0
+var active_users = 1
 var dataset_size = 1
-var percent_renewable = 0
+var percent_renewable = 45
 var ida = false
 var time_difference = 0
 
@@ -109,6 +109,8 @@ function update_dataset() {
 function update_settings() {
     active_users = parseInt(document.getElementById("setting-users").value)
     dataset_size = parseInt(document.getElementById("setting-dataset-size").value)
+    percent_renewable = parseInt(document.getElementById("setting-percent-renewable").value)
+    ida = document.getElementById("setting-ida").checked
 }
 
 /**
@@ -163,10 +165,54 @@ function best_response(tokens) {
     return best_response;
 }
 
+/**
+ * Updates the stats after doing a prompt. 
+ * Calculates new values based on the settings
+ */
 function update_stats() {
     document.getElementById("stat-time").innerHTML = time_difference / 1000
     document.getElementById("stat-dataset-size").innerHTML = dataset.size * dataset_size
     document.getElementById("stat-dataset-gb").innerHTML = ((dataset.size * dataset_size) / 10000000)
+
+    document.getElementById("stat-users").innerHTML = active_users
+    document.getElementById("stat-prompts").innerHTML = Math.round(active_users * 2.5)
+
+    document.getElementById("stat-power").innerHTML = 0.3
+    document.getElementById("stat-emissions").innerHTML = 0.03
+
+    document.getElementById("stat-power-day").innerHTML = Math.round(0.3 * active_users * 2.5)
+
+    let fossil_fuels = 55
+    let renewable = 45
+
+    if (percent_renewable >= 90) {
+        //too high to have effect
+        document.getElementById("stat-percent-extra").innerHTML = "It seems like your desired percentage of renewable energy was too high to implement! Try a slightly lower value."
+    } else if (percent_renewable > 45) {
+        //can have effect if IDA's exist
+        if (ida) {
+            renewable = percent_renewable
+            fossil_fuels = 100 - renewable
+            document.getElementById("stat-percent-extra").innerHTML = " "
+        } else {
+            document.getElementById("stat-percent-extra").innerHTML = "It seems like your AI company decided having extra clean energy was too expensive, so they built the data center somewhere without those regulations! Maybe there's a way to encourage them to implement them?"
+        }
+    } else {
+        renewable = percent_renewable
+        fossil_fuels = 100 - renewable
+    }
+    document.getElementById("stat-percent-fossil-fuels").innerHTML = fossil_fuels
+    document.getElementById("stat-percent-clean-energy").innerHTML = renewable
+
+    //if fossil fuels is 55, then emissions is 0.055 + 0.01
+    let emissions_per_prompt = (fossil_fuels / 1000) + 0.01
+    let emissions_day_grams = emissions_per_prompt * active_users * 2.5
+    let emissions_day_tons = Math.round(emissions_day_grams / 1000000)
+    let emissions_year = emissions_day_tons * 365
+
+    document.getElementById("stat-emissions-day").innerHTML = emissions_day_tons
+    document.getElementById("stat-emissions-annual").innerHTML = emissions_year
+    
 }
 
 window.onload = main;
