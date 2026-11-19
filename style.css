@@ -143,3 +143,16 @@ summary {
 #title p {
     margin-top: 0;
 }
+
+#summary {
+    background-color: #dddddd;
+    margin-top: 25px;
+    margin-bottom: 100px;
+    width: 80%;
+    height: 250px;
+    border: 2px solid #aaaaaa;
+    padding: 12px;
+    resize: none;
+    font-size: 18px;
+    overflow-y: auto;
+}
