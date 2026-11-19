@@ -32,11 +32,12 @@ body {
     border: 2px solid #aaaaaa;
     border-radius: 25px;
     font-family: monospace;
-    background-color: #55e168;
+    color: #eeeeee;
+    background-color: #336bd4;
 }
 
 #button:hover {
-    background-color: #dddddd;
+    background-color: #333ed4;
 }
 
 #response {
@@ -106,6 +107,7 @@ summary {
     max-height: 500px;
     border: 2px solid #aaaaaa;
     border-radius: 4px;
+    padding: 5px;
 }
 
 .setting {
