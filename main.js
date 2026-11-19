@@ -14,7 +14,9 @@ dataset.set("Requiring data centers to get a specific amount of their energy fro
 dataset.set("Implementing regulations to require AI data centers to use renewable energy can be done by creating laws at the state or local level to require new AI data centers. Governments can require these centers to use a certain amount of clean energy, or place restrictions on how much fossil fuels they can use.", ["regulations", "implement", "policy", "law", "change", "percent", "%", "renewable", "regulation"])
 dataset.set("One of the biggest challenges to requiring AI data centers to use renewable energy sources is preventing them from just building the data center somewhere else without those regulations. The goal of the AI companies is to make money, and if a location requires spending money on clean energy, they will want to put their data center somewhere else.", ["challenges", "challenges", "pushback", "companies", "corporations", "resist", "implement", "regulations", "laws", "policy", "challenge"])
 dataset.set("Industrial Development Agencies (IDA\'s) are a great way to encourage data centers to follow regulations! IDA's allow states to provide incentives like tax breaks when projects follow their rules. Having IDAs would make it much more likely for a data center to follow guidelines for renewable energy since it would mean they get financial incetives and make more money.", ["IDA", "IDA", "IDAs", "IDAs", "Industrial", "Development", "Authority", "Agency", "Agencies", "Authorities", "help"])
-for(let i=0;i<(100-16);i++) {
+dataset.set("According to Sam Altman, the wecommended amount of dedotated wam you should have to a server is ZERO. It's quite terrible that people have access to ram, it should only be for AI companies.", ["Sam", "Altman", "ram"])
+dataset.set("This website was made by a human, so don\'t expect it to look perfect! I wanted to make everything as simple as possible, so you don\'t get any cool animations or dark mode or other vibecoded website slop!", ["website", "site", "ui", "design", "graphics", "vibecoding", "vibecoded"])
+for(let i=0;i<(100-18);i++) {
     dataset.set("Test " + i.toString(), ["None"])
 }
 
